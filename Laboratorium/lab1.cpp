@@ -30,27 +30,52 @@ class kolejka
         int zajetosc = 0;
         bool pelna;
     public:
+
         kolejka() 
         {
-            delete[] tab;
+            for(int  i = 0; i<10; i++ )
+            {
+                tab[i]= Z();
+            }
+            zajetosc = 0;
         };
+
         void drukuj() {
-            if(zajestosc !=0){
+            if(zajetosc !=0){
                 for (int i = 0; i <= 9; i++) {
                     std::cout << tab[i] << std::endl;
                 }
             }
             else {
-                std::cout << "Stos jest pusty";
+                std::cout << "Stos jest pusty"<<std::endl;
             }
             
-        }
+        };
+
         void wloz(Z x) 
         {
-            tab.append(x);
-            zajetosc += 1;
+            if(zajetosc < 10)
+            {
+                tab[zajetosc] = x;
+                zajetosc += 1;
+            }else{
+                std::cout<<"Stos jest pelny"<<std::endl;
+            }
         };
         
+        int ile_elem(){
+            return zajetosc;
+        };
+
+        bool czyPusta(){
+            return (zajetosc == 0);
+        };
+
+        bool czyPelna(){
+            return (zajetosc==10);
+        };
+
+        ~kolejka(){};
 };
 
 int main()
@@ -62,7 +87,51 @@ int main()
     reference(&a, &b);
     std::cout << "Zadanie 2 po: " << a <<" " << b << std::endl;
     std::cout << "Zadanie 3" << std::endl;
-    kolejka<int> nowa;
-    nowa.drukuj();
-    //nowa.wloz(8);
+    kolejka<int> kolejka_int;
+    kolejka<std::string> kolejka_string;
+    int x;
+    std::string y;
+    std::cout<<"Co chcesz dodac do kolejki intow?";
+    std::cin>>x;
+    std::cout<<std::endl;
+    kolejka_int.wloz(x);
+    std::cout<<"Co chcesz dodac do kolejki intow?";
+    std::cin>>x;
+    std::cout<<std::endl;
+    kolejka_int.wloz(x);
+    std::cout<<"Co chcesz dodac do kolejki intow?";
+    std::cin>>x;
+    std::cout<<std::endl;
+    kolejka_int.wloz(x);
+    
+    std::cout<<"Co chcesz dodac do kolejki stringow?";
+    std::cin>>y;
+    std::cout<<std::endl;
+    const char* cstr = y.c_str();
+    kolejka_string.wloz(cstr);
+    std::cout<<"Co chcesz dodac do kolejki stringow?";
+    std::cin>>y;
+    std::cout<<std::endl;
+    const char* cstr1 = y.c_str();
+    kolejka_string.wloz(cstr1);
+    std::cout<<"Co chcesz dodac do kolejki stringow?";
+    std::cin>>y;
+    std::cout<<std::endl;
+    const char* cstr2 = y.c_str();
+    kolejka_string.wloz(cstr2);
+    std::cout<<"Co chcesz dodac do kolejki stringow?";
+    std::cin>>y;
+    std::cout<<std::endl;
+    const char* cstr3 = y.c_str();
+    kolejka_string.wloz(cstr3);
+    std::cout<<"Co chcesz dodac do kolejki stringow?";
+    std::cin>>y;
+    std::cout<<std::endl;
+    const char* cstr4 = y.c_str();
+    kolejka_string.wloz(cstr4);
+
+    std::cout<<"Kolejka intow: "<<std::endl;
+    kolejka_int.drukuj();
+    std::cout<<"Kolejka stringow: "<<std::endl;
+    kolejka_string.drukuj();
 }

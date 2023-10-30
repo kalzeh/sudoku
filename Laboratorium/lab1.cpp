@@ -91,44 +91,23 @@ int main()
     kolejka<std::string> kolejka_string;
     int x;
     std::string y;
-    std::cout<<"Co chcesz dodac do kolejki intow?";
-    std::cin>>x;
-    std::cout<<std::endl;
-    kolejka_int.wloz(x);
-    std::cout<<"Co chcesz dodac do kolejki intow?";
-    std::cin>>x;
-    std::cout<<std::endl;
-    kolejka_int.wloz(x);
-    std::cout<<"Co chcesz dodac do kolejki intow?";
-    std::cin>>x;
-    std::cout<<std::endl;
-    kolejka_int.wloz(x);
+
+    for(int i =0; i < 3;i++){
+        std::cout<<"Co chcesz dodac do kolejki intow?";
+        std::cin>>x;
+        std::cout<<std::endl;
+        kolejka_int.wloz(x);
+    }
+
+    for(int i =0; i < 5;i++){
+        std::cout<<"Co chcesz dodac do kolejki stringow?";
+        std::cin>>y;
+        std::cout<<std::endl;
+        const char* cstr = y.c_str();
+        kolejka_string.wloz(cstr);
+    }
     
-    std::cout<<"Co chcesz dodac do kolejki stringow?";
-    std::cin>>y;
-    std::cout<<std::endl;
-    const char* cstr = y.c_str();
-    kolejka_string.wloz(cstr);
-    std::cout<<"Co chcesz dodac do kolejki stringow?";
-    std::cin>>y;
-    std::cout<<std::endl;
-    const char* cstr1 = y.c_str();
-    kolejka_string.wloz(cstr1);
-    std::cout<<"Co chcesz dodac do kolejki stringow?";
-    std::cin>>y;
-    std::cout<<std::endl;
-    const char* cstr2 = y.c_str();
-    kolejka_string.wloz(cstr2);
-    std::cout<<"Co chcesz dodac do kolejki stringow?";
-    std::cin>>y;
-    std::cout<<std::endl;
-    const char* cstr3 = y.c_str();
-    kolejka_string.wloz(cstr3);
-    std::cout<<"Co chcesz dodac do kolejki stringow?";
-    std::cin>>y;
-    std::cout<<std::endl;
-    const char* cstr4 = y.c_str();
-    kolejka_string.wloz(cstr4);
+    
 
     std::cout<<"Kolejka intow: "<<std::endl;
     kolejka_int.drukuj();

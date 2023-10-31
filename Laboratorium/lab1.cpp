@@ -63,6 +63,14 @@ class kolejka
             }
         };
         
+        Z wez() 
+        {
+            Z temp = tab[zajetosc-1];
+            tab[zajetosc-1] = Z();
+            zajetosc-=1;
+            return temp;
+        };
+
         int ile_elem(){
             return zajetosc;
         };
@@ -113,4 +121,9 @@ int main()
     kolejka_int.drukuj();
     std::cout<<"Kolejka stringow: "<<std::endl;
     kolejka_string.drukuj();
+
+    int z  = kolejka_int.wez();
+    std::cout<<z<<std::endl;
+    std::cout<<"Kolejka intow: "<<std::endl;
+    kolejka_int.drukuj();
 }

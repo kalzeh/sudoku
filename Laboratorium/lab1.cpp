@@ -65,8 +65,15 @@ class kolejka
         
         Z wez() 
         {
-            Z temp = tab[zajetosc-1];
-            tab[zajetosc-1] = Z();
+            Z temp = tab[0];
+            if(zajetosc != 0){
+                for(int i=1; i<zajetosc;i++){
+                    tab[i-1]=tab[i];
+                }
+            }else{
+                std::cout<<"Kolejka jest pusta"<<std::endl;
+            }
+            tab[zajetosc-1]=Z();
             zajetosc-=1;
             return temp;
         };

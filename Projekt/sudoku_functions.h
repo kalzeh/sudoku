@@ -109,6 +109,11 @@ class Sudoku{
         * 
         */
         void Wyswietl();   
+
+        /** Metoda do wyboru akcji wykonywabnej przez gracza
+        * 
+        */
+        void Menu();
         
         
 };

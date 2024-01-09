@@ -1,31 +1,86 @@
 /** @file */
 #include "sudoku_functions.h"
+#include <limits>
 
 Sudoku::Sudoku(){
-    Plansza latwa;
-    if(latwa.Generate_plansza("easy", plansza)){
-        std::cout<<"Wygenerowana/ wybrana plansza - pierwotna, bedzie niezmienna";
-        latwa.Wyswietl();
-    };
-    
-    std::cout<<std::endl<<"Plansza do modyfikacji";
-    Wyswietl();
-    Solver solver(*this);
-
-    if(solver.checkBoard()){
-        std::cout<<std::endl<<"Plansza jest poprawna"<<std::endl;}else{std::cout<<"Plansza jest bledna";};
-    if(solver.Solve()){
-        std::cout<<"Rozwiazana plansza: ";
-        solver.Wyswietl();
-    }else{
-        std::cout<<"Plansza jest bledna";
-        solver.Wyswietl();
-    };
+    Menu();
 };
 
-Sudoku::Plansza::Plansza(){
-    std::cout<<"Stworzony"<<std::endl;
+
+void Sudoku::Menu(){
+
+    int wybor;
+    std::cout << "Wybierz co chcesz zrobic:" << std::endl;
+    std::cout << "1. Wygeneruj plansze." << std::endl;
+    std::cout << "2. Wybierz poziom trudnosci" << std::endl;
+    std::cout << "3. Wprowadz wlasna plansze z pliku. (musisz podac pelna sciezke)" << std::endl;
+    std::cout << "4. Zakoncz" << std::endl;
+
+    while (true) {
+        std::cout << "Wpisz numer opcji: ";
+        if (std::cin >> wybor) {
+            if (wybor >= 1 && wybor <= 4) {
+                break;
+            } else {
+                std::cout << "Niepoprawny numer opcji. Wpisz ponownie." << std::endl;
+            }
+        } else {
+            std::cout << "Wprowadzono nieprawidlowy znak. Wpisz ponownie." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+
+    Plansza p;
+    std::string level;
+
+    switch (wybor) {
+        case 1:
+
+            if (p.Generate_plansza("random", plansza)) {
+                p.Wyswietl();
+            }
+            Menu();
+
+            break;
+
+        case 2:
+
+            std::cout << "Wpisz jaki chcesz poziom trudnosci (easy - latwy, medium - sredni, hard - trudny)" << std::endl;
+            std::cin >> level;
+
+            while (level != "easy" && level != "medium" && level != "hard") {
+                std::cout << "Musisz poprawnie wpisac level." << std::endl;
+                std::cin >> level;
+            }
+
+            if (p.Generate_plansza(level, plansza)) {
+                p.Wyswietl();
+            }
+            Menu();
+
+            break;
+
+        case 3:
+            std::cout<<"Wprowadz sciezke."<<std::endl;
+            std::cin >> level;
+            if (p.Generate_plansza(level, plansza)) {
+                p.Wyswietl();
+            }
+            break;
+        case 4:
+
+            std::cout << std::endl << "Dzieki za granie w sudoku" << std::endl;
+            return;
+            
+        default:
+            std::cout << "Musisz wybrac numer odpowiadajacy opcji, ktora chcesz wybrac." << std::endl;
+            Menu();
+            break;
+    }
 };
+
+Sudoku::Plansza::Plansza(){};
 
 bool Sudoku::Plansza::Generate_plansza(std::string _level, int _plansza[9][9]){
     std::string data;
@@ -41,9 +96,12 @@ bool Sudoku::Plansza::Generate_plansza(std::string _level, int _plansza[9][9]){
         break;
         
     }
-    if(data!=""){Wczytaj_plik(data);
-    }else{
+    if(data!=""){
+        Wczytaj_plik(data);
+    }else if (_level[0]=='r'){
         Generate_random();
+    }else{
+        Wczytaj_plik(_level);
     };
     
     for(int i =0;i<9;i++){
@@ -56,11 +114,17 @@ bool Sudoku::Plansza::Generate_plansza(std::string _level, int _plansza[9][9]){
 
 void Sudoku::Plansza::Wczytaj_plik(std::string _data){
 
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-    int random_number = std::rand() % 5 + 1;
-    std::ifstream File("plansze/"+_data+"/"+_data+"00"+std::to_string(random_number)+".txt");
+    std::ifstream File;
 
-    std::cout<<"plansze/"+_data+"/"+_data+"00"+std::to_string(random_number)+".txt"<<std::endl;
+    if(_data != "easy" && _data != "medium" && _data != "hard") {
+        File.open(_data);
+    } else {
+        std::srand(static_cast<unsigned int>(std::time(nullptr)));
+        int random_number = std::rand() % 5 + 1;
+        std::string filename = "plansze/" + _data + "/" + _data + "00" + std::to_string(random_number) + ".txt";
+        std::cout << filename << std::endl;
+        File.open(filename);
+    }
 
     if (!File.is_open()) {
         std::cout << "Error opening the file for writing." << std::endl;
@@ -87,7 +151,6 @@ void Sudoku::Plansza::Wczytaj_plik(std::string _data){
 }
 
 void Sudoku::Plansza::Generate_random(){
-    std::cout<<"GENERUJ"; 
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     int random_number = std::rand() % 12 + 13;
     for(int k=0; k<random_number; k++){

@@ -2,7 +2,11 @@
 
 #include <iostream>
 #include "sudoku_functions.h"
+#include "cmd_ui.h"
 
 int main(){
-    Sudoku sudoku;
+    CmdUI cmdInterface;  
+    cmdInterface.displayMenu();
+
+    return 0;
 }

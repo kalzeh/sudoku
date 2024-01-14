@@ -1,88 +1,32 @@
 /** @file */
 #include "sudoku_functions.h"
-#include <limits>
 
-Sudoku::Sudoku(){
-    Menu();
+
+//----------------------------------Sudoku----------------------------//
+
+Sudoku::Sudoku(): board(), solver(*this) {};
+
+auto Sudoku::getPlansza() -> const int(*)[9]{
+    return plansza;
 };
 
-
-void Sudoku::Menu(){
-
-    int wybor;
-    std::cout << "Wybierz co chcesz zrobic:" << std::endl;
-    std::cout << "1. Wygeneruj plansze." << std::endl;
-    std::cout << "2. Wybierz poziom trudnosci" << std::endl;
-    std::cout << "3. Wprowadz wlasna plansze z pliku. (musisz podac pelna sciezke)" << std::endl;
-    std::cout << "4. Zakoncz" << std::endl;
-
-    while (true) {
-        std::cout << "Wpisz numer opcji: ";
-        if (std::cin >> wybor) {
-            if (wybor >= 1 && wybor <= 4) {
-                break;
-            } else {
-                std::cout << "Niepoprawny numer opcji. Wpisz ponownie." << std::endl;
-            }
-        } else {
-            std::cout << "Wprowadzono nieprawidlowy znak. Wpisz ponownie." << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        }
-    }
-
-    Plansza p;
-    std::string level;
-
-    switch (wybor) {
-        case 1:
-
-            if (p.Generate_plansza("random", plansza)) {
-                p.Wyswietl();
-            }
-            Menu();
-
-            break;
-
-        case 2:
-
-            std::cout << "Wpisz jaki chcesz poziom trudnosci (easy - latwy, medium - sredni, hard - trudny)" << std::endl;
-            std::cin >> level;
-
-            while (level != "easy" && level != "medium" && level != "hard") {
-                std::cout << "Musisz poprawnie wpisac level." << std::endl;
-                std::cin >> level;
-            }
-
-            if (p.Generate_plansza(level, plansza)) {
-                p.Wyswietl();
-            }
-            Menu();
-
-            break;
-
-        case 3:
-            std::cout<<"Wprowadz sciezke."<<std::endl;
-            std::cin >> level;
-            if (p.Generate_plansza(level, plansza)) {
-                p.Wyswietl();
-            }
-            break;
-        case 4:
-
-            std::cout << std::endl << "Dzieki za granie w sudoku" << std::endl;
-            return;
-            
-        default:
-            std::cout << "Musisz wybrac numer odpowiadajacy opcji, ktora chcesz wybrac." << std::endl;
-            Menu();
-            break;
-    }
+void Sudoku::solveSudoku(){
+    solver.Solve();
 };
+
+auto Sudoku::getGeneratedPlansza() -> const int(*)[9]{
+    return board.getGenerated();
+};
+        
+auto Sudoku::getSolvedPlansza() -> const int(*)[9]{
+    return solver.getSolved();
+};
+
+//----------------------------------Plansza----------------------------//
 
 Sudoku::Plansza::Plansza(){};
 
-bool Sudoku::Plansza::Generate_plansza(std::string _level, int _plansza[9][9]){
+bool Sudoku::Plansza::generatePlansza(std::string _level, int _plansza[9][9]){
     std::string data;
     switch(_level[0]){
         case 'e':
@@ -97,11 +41,11 @@ bool Sudoku::Plansza::Generate_plansza(std::string _level, int _plansza[9][9]){
         
     }
     if(data!=""){
-        Wczytaj_plik(data);
+        wczytajPlik(data);
     }else if (_level[0]=='r'){
-        Generate_random();
+        generateRandom();
     }else{
-        Wczytaj_plik(_level);
+        wczytajPlik(_level);
     };
     
     for(int i =0;i<9;i++){
@@ -112,7 +56,7 @@ bool Sudoku::Plansza::Generate_plansza(std::string _level, int _plansza[9][9]){
     return true;
 }
 
-void Sudoku::Plansza::Wczytaj_plik(std::string _data){
+void Sudoku::Plansza::wczytajPlik(std::string _data){
 
     std::ifstream File;
 
@@ -150,7 +94,7 @@ void Sudoku::Plansza::Wczytaj_plik(std::string _data){
     File.close();
 }
 
-void Sudoku::Plansza::Generate_random(){
+void Sudoku::Plansza::generateRandom(){
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     int random_number = std::rand() % 12 + 13;
     for(int k=0; k<random_number; k++){
@@ -174,54 +118,11 @@ void Sudoku::Plansza::Generate_random(){
 
 };
 
-Sudoku::Solver::Solver(Sudoku & outerMember){
-    for (int i = 0; i < 9; ++i) {
-        for (int j = 0; j < 9; ++j) {
-            plansza[i][j] = outerMember.plansza[i][j];
-        }
-    }
-}
-
-void Sudoku::Wyswietl(){
-    std::cout<<std::endl<<"--------+-------+--------"<<std::endl;
-    for(int i =0; i<9;i++){
-        std::cout<<"| "; 
-        for(int j=0; j<9; j++){
-            std::cout<<plansza[i][j]<<" ";
-            if(j%3==2)std::cout<<"| "; 
-        }
-        std::cout<<std::endl;
-        if(i%3==2) std::cout<<"--------+-------+--------"<<std::endl; 
-    }
+auto Sudoku::Plansza::getGenerated() -> const int(*)[9]{
+    return plansza;
 };
 
-void Sudoku::Solver::Wyswietl(){
-    std::cout<<std::endl<<"--------+-------+--------"<<std::endl;
-    for(int i =0; i<9;i++){
-        std::cout<<"| "; 
-        for(int j=0; j<9; j++){
-            std::cout<<plansza[i][j]<<" ";
-            if(j%3==2)std::cout<<"| "; 
-        }
-        std::cout<<std::endl;
-        if(i%3==2) std::cout<<"--------+-------+--------"<<std::endl; 
-    }
-};
-
-void Sudoku::Plansza::Wyswietl(){
-    std::cout<<std::endl<<"--------+-------+--------"<<std::endl;
-    for(int i =0; i<9;i++){
-        std::cout<<"| "; 
-        for(int j=0; j<9; j++){
-            std::cout<<plansza[i][j]<<" ";
-            if(j%3==2)std::cout<<"| "; 
-        }
-        std::cout<<std::endl;
-        if(i%3==2) std::cout<<"--------+-------+--------"<<std::endl; 
-    }
-};
-
-bool Sudoku::Solver::check(int x, int y, int a){
+bool Sudoku::Plansza::check(int x, int y, int a){
     //sprawdzenie rzedu
     for(int i = 0 ;i<9;i++){
         if( i != y && plansza[x][i]==a) return false;
@@ -241,7 +142,22 @@ bool Sudoku::Solver::check(int x, int y, int a){
     return true;
 }
 
-bool Sudoku::Plansza::check(int x, int y, int a){
+
+//----------------------------------Solver----------------------------//
+
+Sudoku::Solver::Solver(Sudoku & outerMember){
+    for (int i = 0; i < 9; ++i) {
+        for (int j = 0; j < 9; ++j) {
+            plansza[i][j] = outerMember.plansza[i][j];
+        }
+    }
+}
+
+auto Sudoku::Solver::getSolved() -> const int(*)[9]{
+    return plansza;
+};
+
+bool Sudoku::Solver::check(int x, int y, int a){
     //sprawdzenie rzedu
     for(int i = 0 ;i<9;i++){
         if( i != y && plansza[x][i]==a) return false;

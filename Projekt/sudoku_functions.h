@@ -9,7 +9,10 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 
+class Plansza;
+class Solver;
 
 /** 
  * Klasa Sudoku
@@ -17,30 +20,30 @@
 class Sudoku{
     
     private:
-        //plansza poczatkowa
-        int plansza[9][9] ={{9,8,7,6,5,4,3,2,1},
-                            {6,5,4,0,0,0,9,8,7},
-                            {0,0,0,0,0,0,0,0,0},
-                            {0,0,0,0,0,0,0,0,0},
-                            {0,0,0,0,0,0,0,0,0},
-                            {0,0,0,0,0,0,0,0,0},
-                            {0,0,0,0,0,0,0,0,0},
-                            {0,0,0,0,0,0,0,0,0},
-                            {0,0,0,0,0,0,0,0,0},};
-    public:
+        
         class Plansza{
             private:
+
+                /** Plansza, która jest początkowo wygenerowana - użytkownik nie działa na niej, to jest początkowa plansza, do sprawdzania wersji początkowej.
+                *   
+                */
                 int plansza[9][9];
+
             public:
+
                 /** Konstruktor
                 */
                 Plansza();
+
                 /** metoda Generate_plansza sprawdza poziom, jaki chce uzytkownik i na tej podstawie wybiera plansze z predefiniowanych
                  * @param _level rzadany poziom
                 */
-                bool Generate_plansza(std::string _level,int _plansza[9][9]);
+                bool generatePlansza(std::string _level,int _plansza[9][9]);
+
                 /** metoda Generate_random tworzy losowo wygenerowana plansze
                 */
+                void generateRandom();
+
                /** Metoda check, sprawdza czy dana liczba jest poprawna
                 *   @param x wiersz
                 *   @param y kolumna
@@ -48,19 +51,25 @@ class Sudoku{
                 *   @return zwraca true jezeli liczba moze byc, false jesli nie
                 */
                 bool check(int x, int y, int a);
-                void Generate_random();
+                
+
                 /** metoda Wczytaj_plik wczytuje plansze z pliku
                  * @param _data jaki poziom ma byc
                 */
-                void Wczytaj_plik(std::string _data);
-                /** Metoda do wyswietlania planszy 
-                * 
+                void wczytajPlik(std::string _data);
+
+                /** Metoda zwraca plansze
+                * @return plansza[9][9]
                 */
-                void Wyswietl();   
+                auto getGenerated() -> const int(*)[9];
+
         };
 
         class Solver{
             private:
+                /** PRozwiązana plansza, użytkownik nie ma do niej dostępu
+                *   
+                */
                 int plansza[9][9];
             public:
 
@@ -94,27 +103,44 @@ class Sudoku{
             *   @return zwraca true jezeli dana komorka jest pusta (o wartosci 0)
             */
             bool findEmpty(int x, int y);
-            /** Metoda do wyswietlania planszy 
-             * 
+            
+            /** Metoda zwraca plansze
+            *   @return plansza[9][9]
             */
-            void Wyswietl();           
+            auto getSolved() -> const int(*)[9];        
         };
-
-
+       
+    public:
+        /** Plansza, na której uzytkownik wykonuje działania
+        *  
+        */
+        int plansza[9][9];
+        Plansza board;
+        Solver solver;
         /** Konstruktor, ktory odpala cala gre
         *   
         */
         Sudoku();  
-        /** Metoda do wyswietlania planszy 
-        * 
-        */
-        void Wyswietl();   
 
-        /** Metoda do wyboru akcji wykonywabnej przez gracza
-        * 
+        /** Metoda zwraca plansze
+        *   @return plansza[9][9]
         */
-        void Menu();
+        auto getPlansza() -> const int(*)[9];        
+
+        /** Metoda pozwala na interakcję z solverem
+        *   
+        */
+        void solveSudoku();
+
+        /** Metoda zwraca wygenerowana plansze sudoku
+        *   @return plansza[9][9]
+        */
+        auto getGeneratedPlansza() -> const int(*)[9];
         
+        /** Metoda zwraca rozwiązaną plansze sudoku
+        *   @return plansza[9][9]
+        */
+        auto getSolvedPlansza() -> const int(*)[9];
         
 };
 

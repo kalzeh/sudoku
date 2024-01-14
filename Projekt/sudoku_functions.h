@@ -67,47 +67,53 @@ class Sudoku{
 
         class Solver{
             private:
+                
+            public:
                 /** PRozwiązana plansza, użytkownik nie ma do niej dostępu
                 *   
                 */
                 int plansza[9][9];
-            public:
 
-            /** kopiuje planszę do klasy solver z klasy sudoku
-             * 
-            */
-            Solver(Sudoku & outerMember);
+                /** kopiuje planszę do klasy solver z klasy sudoku
+                 * 
+                */
+                Solver(Sudoku & outerMember);
 
-            /** Metoda check, sprawdza czy dana liczba jest poprawna
-            *   @param x wiersz
-            *   @param y kolumna
-            *   @param a liczba do sprawdenia
-            *   @return zwraca true jezeli liczba moze byc, false jesli nie
-            */
-            bool check(int x, int y, int a);
+                /** kopiuje planszę do klasy solver z podanego parametru
+                 * @param plansza do zapisania
+                */
+                void updatePlansza(const int _plansza[9][9]);
 
-            /** Metoda checkBoard, sprawdza czy plansza jest poprawna
-            *   @return zwraca true jezeli plansza jest poprawna, false jesli nie
-            */
-            bool checkBoard();
+                /** Metoda check, sprawdza czy dana liczba jest poprawna
+                *   @param x wiersz
+                *   @param y kolumna
+                *   @param a liczba do sprawdenia
+                *   @return zwraca true jezeli liczba moze byc, false jesli nie
+                */
+                bool check(int x, int y, int a);
 
-            /** Metoda solve, rozwiazujaca zadana plansze sudoku
-            *   @param _plansza przyjmuje planszę do sudoku
-            *   @return zwraca rozwiązaną planszę
-            */
-            bool Solve();
+                /** Metoda checkBoard, sprawdza czy plansza jest poprawna
+                *   @return zwraca true jezeli plansza jest poprawna, false jesli nie
+                */
+                bool checkBoard();
 
-            /** Metoda findEmpty szuka pierwszego pustego pola (o wartosci 0)
-            *   @param x wiersz
-            *   @param y kolumna
-            *   @return zwraca true jezeli dana komorka jest pusta (o wartosci 0)
-            */
-            bool findEmpty(int x, int y);
-            
-            /** Metoda zwraca plansze
-            *   @return plansza[9][9]
-            */
-            auto getSolved() -> const int(*)[9];        
+                /** Metoda solve, rozwiazujaca zadana plansze sudoku
+                *   @param _plansza przyjmuje planszę do sudoku
+                *   @return zwraca rozwiązaną planszę
+                */
+                bool Solve();
+
+                /** Metoda findEmpty szuka pierwszego pustego pola (o wartosci 0)
+                *   @param x wiersz
+                *   @param y kolumna
+                *   @return zwraca true jezeli dana komorka jest pusta (o wartosci 0)
+                */
+                bool findEmpty(int x, int y);
+                
+                /** Metoda zwraca plansze
+                *   @return plansza[9][9]
+                */
+                auto getSolved() -> const int(*)[9];        
         };
        
     public:

@@ -11,7 +11,7 @@ auto Sudoku::getPlansza() -> const int(*)[9]{
 };
 
 void Sudoku::solveSudoku(){
-    solver.Solve();
+    //solver.Solve();
 };
 
 auto Sudoku::getGeneratedPlansza() -> const int(*)[9]{
@@ -152,6 +152,15 @@ Sudoku::Solver::Solver(Sudoku & outerMember){
         }
     }
 }
+
+void Sudoku::Solver::updatePlansza(const int _plansza[9][9]) {
+    for (int i = 0; i < 9; ++i) {
+        for (int j = 0; j < 9; ++j) {
+            plansza[i][j] = _plansza[i][j];
+        }
+    }
+}
+
 
 auto Sudoku::Solver::getSolved() -> const int(*)[9]{
     return plansza;

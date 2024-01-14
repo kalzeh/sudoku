@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['findempty_23',['findEmpty',['../classSudoku_1_1Solver.html#aaf79c7d58305ba8c67ea9ce91445095d',1,'Sudoku::Solver']]]
+  ['generateplansza_37',['generatePlansza',['../classCmdUI.html#aebce5d5288bac91c8ae973429d712447',1,'CmdUI::generatePlansza()'],['../classabstractUI.html#a01aeb8043d3388bee410d063216795a5',1,'abstractUI::generatePlansza()']]],
+  ['getgeneratedplansza_38',['getGeneratedPlansza',['../classSudoku.html#ae2fc0de2571aa64193f87f34c68e7b1c',1,'Sudoku']]],
+  ['getplansza_39',['getPlansza',['../classSudoku.html#af9234c89abd74b017376907fdf0a2d39',1,'Sudoku']]],
+  ['getsolvedplansza_40',['getSolvedPlansza',['../classSudoku.html#a0ea9c725834130aef1137d4782dcdf60',1,'Sudoku']]]
 ];

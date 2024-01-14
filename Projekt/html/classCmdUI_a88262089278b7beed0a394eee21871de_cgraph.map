@@ -1,0 +1,7 @@
+<map id="CmdUI::displayMenu" name="CmdUI::displayMenu">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,163,83"/>
+<area shape="rect" id="node2" href="$classCmdUI.html#a121d7fbd2384aadd848b69a4e5e6aca4" title=" " alt="" coords="211,5,449,32"/>
+<area shape="rect" id="node4" href="$classCmdUI.html#aebce5d5288bac91c8ae973429d712447" title=" " alt="" coords="239,56,421,83"/>
+<area shape="rect" id="node5" href="$classCmdUI.html#a66904c3f496df25cf2da9f89c951aad1" title=" " alt="" coords="232,107,428,133"/>
+<area shape="rect" id="node3" href="$classSudoku.html#ae2fc0de2571aa64193f87f34c68e7b1c" title=" " alt="" coords="497,5,713,32"/>
+</map>

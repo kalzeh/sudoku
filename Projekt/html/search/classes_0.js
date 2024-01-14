@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plansza_15',['Plansza',['../classSudoku_1_1Plansza.html',1,'Sudoku']]]
+  ['abstractui_23',['abstractUI',['../classabstractUI.html',1,'']]]
 ];

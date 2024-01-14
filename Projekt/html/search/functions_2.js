@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generate_5fplansza_24',['Generate_plansza',['../classSudoku_1_1Plansza.html#af151f5a9e1ae5cc98f7fc49a8421d55b',1,'Sudoku::Plansza']]]
+  ['loadboardfromfile_41',['loadBoardFromFile',['../classCmdUI.html#a66904c3f496df25cf2da9f89c951aad1',1,'CmdUI::loadBoardFromFile()'],['../classabstractUI.html#a2e357de36e5aa5d23d84f87ca3c12b03',1,'abstractUI::loadBoardFromFile()']]]
 ];

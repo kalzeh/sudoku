@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plansza_14',['plansza',['../classSudoku.html#a06d48e678751958e1355c2e3618311eb',1,'Sudoku']]]
+  ['readme_18',['README',['../md_README.html',1,'']]]
 ];

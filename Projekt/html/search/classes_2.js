@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sudoku_25',['Sudoku',['../classSudoku.html',1,'']]]
+  ['sudoku_28',['Sudoku',['../classSudoku.html',1,'']]]
 ];

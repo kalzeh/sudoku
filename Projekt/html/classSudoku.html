@@ -87,10 +87,13 @@ Collaboration diagram for Sudoku:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5fc6547fe577e8eca24a7e86d2fa0ff8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSudoku.html#a5fc6547fe577e8eca24a7e86d2fa0ff8">Sudoku</a> ()</td></tr>
 <tr class="separator:a5fc6547fe577e8eca24a7e86d2fa0ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f7c2e9676ce84b421d0f446e2d33603"><td class="memItemLeft" align="right" valign="top"><a id="a4f7c2e9676ce84b421d0f446e2d33603"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>check</b> (int x, int y, int a)</td></tr>
+<tr class="separator:a4f7c2e9676ce84b421d0f446e2d33603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dce55d23eec4ec29679f09912ec36e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSudoku.html#a8dce55d23eec4ec29679f09912ec36e6">writeDigit</a> (int x, int y, int _dig)</td></tr>
+<tr class="separator:a8dce55d23eec4ec29679f09912ec36e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9234c89abd74b017376907fdf0a2d39"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSudoku.html#af9234c89abd74b017376907fdf0a2d39">getPlansza</a> () -&gt; const int(*)[9]</td></tr>
 <tr class="separator:af9234c89abd74b017376907fdf0a2d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dc98d9aadc50d99133ba78cf1e0852f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSudoku.html#a0dc98d9aadc50d99133ba78cf1e0852f">solveSudoku</a> ()</td></tr>
-<tr class="separator:a0dc98d9aadc50d99133ba78cf1e0852f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2fc0de2571aa64193f87f34c68e7b1c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSudoku.html#ae2fc0de2571aa64193f87f34c68e7b1c">getGeneratedPlansza</a> () -&gt; const int(*)[9]</td></tr>
 <tr class="separator:ae2fc0de2571aa64193f87f34c68e7b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ea9c725834130aef1137d4782dcdf60"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSudoku.html#a0ea9c725834130aef1137d4782dcdf60">getSolvedPlansza</a> () -&gt; const int(*)[9]</td></tr>
@@ -124,7 +127,7 @@ Solver&#160;</td><td class="memItemRight" valign="bottom"><b>solver</b></td></tr
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Konstruktor, ktory odpala cala gre </p>
+<p>Konstruktor </p>
 
 </div>
 </div>
@@ -177,8 +180,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSudoku_af9234c89abd74b017376907fdf0a2d39_icgraph.png" border="0" usemap="#aclassSudoku_af9234c89abd74b017376907fdf0a2d39_icgraph" alt=""/></div>
 <map name="aclassSudoku_af9234c89abd74b017376907fdf0a2d39_icgraph" id="aclassSudoku_af9234c89abd74b017376907fdf0a2d39_icgraph">
-<area shape="rect" title=" " alt="" coords="224,5,372,32"/>
-<area shape="rect" href="classCmdUI.html#a04e5052d2de33481706c949ac3cf6cd4" title=" " alt="" coords="5,5,176,32"/>
+<area shape="rect" title=" " alt="" coords="883,5,1031,32"/>
+<area shape="rect" href="classCmdUI.html#a04e5052d2de33481706c949ac3cf6cd4" title=" " alt="" coords="664,5,835,32"/>
+<area shape="rect" href="classCmdUI.html#ac090b4e99bbb2abe80c2c7c6e95ddda5" title=" " alt="" coords="211,5,417,32"/>
+<area shape="rect" href="classCmdUI.html#a5f03e7df2f0607a56f3d47f19ada6423" title=" " alt="" coords="465,31,616,57"/>
+<area shape="rect" href="classCmdUI.html#a88262089278b7beed0a394eee21871de" title=" " alt="" coords="5,5,163,32"/>
 </map>
 </div>
 
@@ -204,28 +210,65 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSudoku_a0ea9c725834130aef1137d4782dcdf60_icgraph.png" border="0" usemap="#aclassSudoku_a0ea9c725834130aef1137d4782dcdf60_icgraph" alt=""/></div>
 <map name="aclassSudoku_a0ea9c725834130aef1137d4782dcdf60_icgraph" id="aclassSudoku_a0ea9c725834130aef1137d4782dcdf60_icgraph">
-<area shape="rect" title=" " alt="" coords="268,5,460,32"/>
-<area shape="rect" href="classCmdUI.html#a833134307c7af8ef1bfc1d3cf6d2b292" title=" " alt="" coords="5,5,220,32"/>
+<area shape="rect" title=" " alt="" coords="728,5,920,32"/>
+<area shape="rect" href="classCmdUI.html#a833134307c7af8ef1bfc1d3cf6d2b292" title=" " alt="" coords="465,5,680,32"/>
+<area shape="rect" href="classCmdUI.html#ac090b4e99bbb2abe80c2c7c6e95ddda5" title=" " alt="" coords="211,5,417,32"/>
+<area shape="rect" href="classCmdUI.html#a88262089278b7beed0a394eee21871de" title=" " alt="" coords="5,5,163,32"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a0dc98d9aadc50d99133ba78cf1e0852f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0dc98d9aadc50d99133ba78cf1e0852f">&#9670;&nbsp;</a></span>solveSudoku()</h2>
+<a id="a8dce55d23eec4ec29679f09912ec36e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dce55d23eec4ec29679f09912ec36e6">&#9670;&nbsp;</a></span>writeDigit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Sudoku::solveSudoku </td>
+          <td class="memname">void Sudoku::writeDigit </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_dig</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Metoda pozwala na interakcję z solverem </p>
+<p>Metoda pozwala na wprowadzenie liczby do planszy </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_gid</td><td>liczba do wprowadzenia </td></tr>
+    <tr><td class="paramname">x</td><td>numer wiersza </td></tr>
+    <tr><td class="paramname">y</td><td>numer kolumny </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSudoku_a8dce55d23eec4ec29679f09912ec36e6_icgraph.png" border="0" usemap="#aclassSudoku_a8dce55d23eec4ec29679f09912ec36e6_icgraph" alt=""/></div>
+<map name="aclassSudoku_a8dce55d23eec4ec29679f09912ec36e6_icgraph" id="aclassSudoku_a8dce55d23eec4ec29679f09912ec36e6_icgraph">
+<area shape="rect" title=" " alt="" coords="664,5,805,32"/>
+<area shape="rect" href="classCmdUI.html#a5f03e7df2f0607a56f3d47f19ada6423" title=" " alt="" coords="465,5,616,32"/>
+<area shape="rect" href="classCmdUI.html#ac090b4e99bbb2abe80c2c7c6e95ddda5" title=" " alt="" coords="211,5,417,32"/>
+<area shape="rect" href="classCmdUI.html#a88262089278b7beed0a394eee21871de" title=" " alt="" coords="5,5,163,32"/>
+</map>
+</div>
 
 </div>
 </div>

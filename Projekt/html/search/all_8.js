@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ui_2eh_22',['ui.h',['../ui_8h.html',1,'']]]
+  ['writedigit_25',['writeDigit',['../classSudoku.html#a8dce55d23eec4ec29679f09912ec36e6',1,'Sudoku']]]
 ];

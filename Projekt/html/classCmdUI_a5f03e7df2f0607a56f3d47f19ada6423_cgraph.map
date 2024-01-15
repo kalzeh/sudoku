@@ -1,0 +1,7 @@
+<map id="CmdUI::playerSolve" name="CmdUI::playerSolve">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,156,83"/>
+<area shape="rect" id="node2" href="$classCmdUI.html#ace01382e39d8b1f595e903205734b738" title=" " alt="" coords="214,5,365,32"/>
+<area shape="rect" id="node3" href="$classCmdUI.html#a04e5052d2de33481706c949ac3cf6cd4" title=" " alt="" coords="204,56,375,83"/>
+<area shape="rect" id="node5" href="$classSudoku.html#a8dce55d23eec4ec29679f09912ec36e6" title=" " alt="" coords="219,107,360,133"/>
+<area shape="rect" id="node4" href="$classSudoku.html#af9234c89abd74b017376907fdf0a2d39" title=" " alt="" coords="423,56,571,83"/>
+</map>

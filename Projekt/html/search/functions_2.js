@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['loadboardfromfile_41',['loadBoardFromFile',['../classCmdUI.html#a66904c3f496df25cf2da9f89c951aad1',1,'CmdUI::loadBoardFromFile()'],['../classabstractUI.html#a2e357de36e5aa5d23d84f87ca3c12b03',1,'abstractUI::loadBoardFromFile()']]]
+  ['generateplansza_43',['generatePlansza',['../classCmdUI.html#aebce5d5288bac91c8ae973429d712447',1,'CmdUI::generatePlansza()'],['../classabstractUI.html#a01aeb8043d3388bee410d063216795a5',1,'abstractUI::generatePlansza()']]],
+  ['getgeneratedplansza_44',['getGeneratedPlansza',['../classSudoku.html#ae2fc0de2571aa64193f87f34c68e7b1c',1,'Sudoku']]],
+  ['getplansza_45',['getPlansza',['../classSudoku.html#af9234c89abd74b017376907fdf0a2d39',1,'Sudoku']]],
+  ['getsolvedplansza_46',['getSolvedPlansza',['../classSudoku.html#a0ea9c725834130aef1137d4782dcdf60',1,'Sudoku']]]
 ];

@@ -22,14 +22,12 @@ class Sudoku{
     private:
         
         class Plansza{
-            private:
-
+            
+            public:
                 /** Plansza, która jest początkowo wygenerowana - użytkownik nie działa na niej, to jest początkowa plansza, do sprawdzania wersji początkowej.
                 *   
                 */
                 int plansza[9][9];
-
-            public:
 
                 /** Konstruktor
                 */
@@ -52,6 +50,12 @@ class Sudoku{
                 */
                 bool check(int x, int y, int a);
                 
+                /** Metoda findEmpty szuka pierwszego pustego pola (o wartosci 0)
+                *   @param x wiersz
+                *   @param y kolumna
+                *   @return zwraca true jezeli dana komorka jest pusta (o wartosci 0)
+                */
+                bool isEmpty(int x, int y);
 
                 /** metoda Wczytaj_plik wczytuje plansze z pliku
                  * @param _data jaki poziom ma byc
@@ -69,7 +73,7 @@ class Sudoku{
             private:
                 
             public:
-                /** PRozwiązana plansza, użytkownik nie ma do niej dostępu
+                /** Rozwiązana plansza
                 *   
                 */
                 int plansza[9][9];
@@ -121,22 +125,28 @@ class Sudoku{
         *  
         */
         int plansza[9][9];
+
         Plansza board;
         Solver solver;
+
         /** Konstruktor, ktory odpala cala gre
         *   
         */
         Sudoku();  
 
+        bool check(int x, int y, int a);
+
+        /** Metoda pozwala na wprowadzenie liczby do planszy
+        *   @param _gid liczba do wprowadzenia
+        *   @param x numer wiersza
+        *   @param y numer kolumny
+        */
+        void writeDigit(int x, int y, int _dig);
+        
         /** Metoda zwraca plansze
         *   @return plansza[9][9]
         */
         auto getPlansza() -> const int(*)[9];        
-
-        /** Metoda pozwala na interakcję z solverem
-        *   
-        */
-        void solveSudoku();
 
         /** Metoda zwraca wygenerowana plansze sudoku
         *   @return plansza[9][9]
@@ -147,7 +157,8 @@ class Sudoku{
         *   @return plansza[9][9]
         */
         auto getSolvedPlansza() -> const int(*)[9];
-        
+
+       
 };
 
 #endif

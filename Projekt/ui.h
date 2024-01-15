@@ -8,6 +8,19 @@ class abstractUI{
     protected:
         Sudoku sudoku;
     public:
+        /** Metoda "czysci ekran" - ustawia 50 pustych linijek
+         * 
+        */
+        virtual void clearScreen() = 0;
+        /** Metoda wyswietla naglowek
+         * 
+        */
+        virtual void displayHeader() = 0;
+
+        /** Metoda wyświetlająca INSTRUKCJE DO GRY
+        *   
+        */
+        virtual void displayInstructions() =0;
         /** Metoda wyświetlająca menu
         *   
         */
@@ -17,6 +30,11 @@ class abstractUI{
         *   
         */
         virtual void displayPlanszaMenu() = 0;
+
+        /** Metoda umozliwiajaca graczowi wprowadzanie zmian.
+        *   
+        */
+        virtual void playerSolve() = 0;
 
         /** Metoda tworzaca plansze (za pomoca metody generatePlansza())
         *   

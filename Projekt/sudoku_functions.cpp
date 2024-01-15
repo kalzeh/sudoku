@@ -10,10 +10,6 @@ auto Sudoku::getPlansza() -> const int(*)[9]{
     return plansza;
 };
 
-void Sudoku::solveSudoku(){
-    //solver.Solve();
-};
-
 auto Sudoku::getGeneratedPlansza() -> const int(*)[9]{
     return board.getGenerated();
 };
@@ -21,6 +17,40 @@ auto Sudoku::getGeneratedPlansza() -> const int(*)[9]{
 auto Sudoku::getSolvedPlansza() -> const int(*)[9]{
     return solver.getSolved();
 };
+
+bool Sudoku::check(int x, int y, int a){
+    //sprawdzenie rzedu
+    for(int i = 0 ;i<9;i++){
+        if( i != y && plansza[x][i]==a) return false;
+    }
+    //sprawdzenie kolumny
+    for(int i = 0 ;i<9;i++){
+        if( i != x && plansza[i][y]==a) return false;
+    }
+    //sprawdzenie kwadratu 3x3
+    int startX = x - x%3;
+    int startY = y - y%3;
+    for(int i = 0;i<3;i++){
+        for(int j = 0; j< 3;j++){
+            if(x!=(startX+i) && y!=(startY+j) && plansza[startX+i][startY+j]==a) return false;
+        }
+    }
+    return true;
+}
+
+void Sudoku::writeDigit(int x, int y, int _dig){
+    if(board.isEmpty(x,y)){
+        if(check(x,y,_dig)){
+            plansza[x][y]=_dig;
+        }else{
+            std::cout<<"błednie wpisana wartosc";
+            return;
+        }
+    }else{
+        std::cout<<"Nie mozesz nadpisac poczatkpowych wartosci;"<<std::endl;
+        return;
+    }
+}
 
 //----------------------------------Plansza----------------------------//
 
@@ -142,6 +172,10 @@ bool Sudoku::Plansza::check(int x, int y, int a){
     return true;
 }
 
+bool Sudoku::Plansza::isEmpty(int x, int y){
+    if(plansza[x][y]==0) return true;
+    return false;
+};
 
 //----------------------------------Solver----------------------------//
 
@@ -160,7 +194,6 @@ void Sudoku::Solver::updatePlansza(const int _plansza[9][9]) {
         }
     }
 }
-
 
 auto Sudoku::Solver::getSolved() -> const int(*)[9]{
     return plansza;
@@ -216,7 +249,6 @@ bool Sudoku::Solver::Solve(){
                         plansza[i][j] = k;
                         if (Solve()) return true;
                         plansza[i][j] = 0;
-                        
                     }
                 }
                 return false;
